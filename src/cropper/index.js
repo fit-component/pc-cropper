@@ -4,17 +4,13 @@ import Cropperjs from 'cropperjs'
 import 'cropperjs/dist/cropper.css'
 
 export default class Cropper extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {}
+    }
+
     componentDidMount() {
-        let options = {}
-
-        Object.keys(this.props).map((propKey)=> {
-            if (propKey !== 'src' && propKey !== 'alt' && propKey !== 'crossOrigin') {
-                options[propKey] = this.props[propKey]
-            }
-        })
-
-        this.img = ReactDOM.findDOMNode(this.refs.img)
-        this.cropper = new Cropperjs(this.img, options)
+        this.freshCropper()
     }
 
     componentWillReceiveProps(nextProps) {
@@ -32,6 +28,23 @@ export default class Cropper extends React.Component {
             delete this.img
             delete this.cropper
         }
+    }
+
+    shouldComponentUpdate() {
+        return false
+    }
+
+    freshCropper() {
+        let options = {}
+
+        Object.keys(this.props).map((propKey)=> {
+            if (propKey !== 'src' && propKey !== 'alt' && propKey !== 'crossOrigin') {
+                options[propKey] = this.props[propKey]
+            }
+        })
+
+        this.img = ReactDOM.findDOMNode(this.refs.img)
+        this.cropper = new Cropperjs(this.img, options)
     }
 
     crop() {
@@ -114,9 +127,12 @@ export default class Cropper extends React.Component {
         return this.cropper.setDragMode()
     }
 
-    // 多次裁剪
+    // @extend
+    // @desc 多次裁剪
     cut() {
-        console.log('cut!')
+        let info = this.cropper.getCropBoxData()
+        this.cropper.replace(this.cropper.getCroppedCanvas().toDataURL())
+        return info
     }
 
     render() {
@@ -142,7 +158,7 @@ Cropper.defaultProps = {
 
     // @desc 显示方式
     // @enum 0:比较随意 1:整体要在裁剪框内 2:整体无法被裁剪框覆盖 3:整体都在背景框内
-    viewMode: 3,
+    viewMode: 1,
 
     // @desc 拖拽方式
     // @enum crop:创建一个裁剪框 move:直接移动canvas图片 none:无法移动
