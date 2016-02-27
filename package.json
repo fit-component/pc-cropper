@@ -16,9 +16,8 @@
   "author": "tieba",
   "license": "ISC",
   "dependencies": {
-    "cropperjs": "^0.5.6",
     "react": "^0.14.7",
-    "classnames": "^2.2.3",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "cropperjs": "^0.5.6"
   }
 }
