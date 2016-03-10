@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Cropperjs from 'cropperjs'
+import classNames from 'classnames'
 import 'cropperjs/dist/cropper.css'
 
 export default class Cropper extends React.Component {
@@ -136,17 +137,22 @@ export default class Cropper extends React.Component {
     }
 
     render() {
+        const {className, crossOrigin, src, alt, ...others} = this.props
+        const classes = classNames({
+            '_namespace': true,
+            [className]: className
+        })
+
         return (
-            <div {...this.props}
-                src={null}
-                crossOrigin={null}
-                alt={null}>
-                <img
-                    crossOrigin={this.props.crossOrigin}
-                    ref='img'
-                    src={this.props.src}
-                    alt={this.props.alt === undefined ? 'picture' : this.props.alt}
-                    style={{opacity: 0}}/>
+            <div {...others} className={classes}
+                             src={null}
+                             crossOrigin={null}
+                             alt={null}>
+                <img crossOrigin={crossOrigin}
+                     ref='img'
+                     src={src}
+                     alt={alt === undefined ? 'picture' : alt}
+                     style={{opacity: 0}}/>
             </div>
         )
     }
