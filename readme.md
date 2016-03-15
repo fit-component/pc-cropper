@@ -5,5 +5,5 @@
 ---
 
 ````jsx
-npm install fit-cropper /* or */ fis3 install fit-cropper
+npm install fit-cropper
 ````
