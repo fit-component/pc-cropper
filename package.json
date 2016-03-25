@@ -1,6 +1,6 @@
 {
   "name": "fit-cropper",
-  "version": "0.0.47",
+  "version": "0.0.48",
   "description": "cropper",
   "main": "lib/index.js",
   "scripts": {
