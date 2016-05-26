@@ -1,6 +1,6 @@
 {
   "name": "fit-cropper",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "cropper",
   "main": "lib/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "cropperjs": "^0.7.0",
-    "classnames": "^2.2.3",
-    "typings": "lib/index.d.ts"
-  }
+    "classnames": "^2.2.3"
+  },
+  "typings": "lib/index.d.ts"
 }
