@@ -140,14 +140,14 @@ export default class Cropper extends React.Component {
         const {className, crossOrigin, src, alt, ...others} = this.props
         const classes = classNames({
             '_namespace': true,
-            [className]: className
+            [className] : className
         })
 
         return (
-            <div {...others} className={classes}
-                             src={null}
-                             crossOrigin={null}
-                             alt={null}>
+            <div className={classes}
+                 src={null}
+                 crossOrigin={null}
+                 alt={null}>
                 <img crossOrigin={crossOrigin}
                      ref='img'
                      src={src}
